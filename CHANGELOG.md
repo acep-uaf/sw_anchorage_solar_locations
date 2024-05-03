@@ -177,6 +177,7 @@ In order to mitigate errors, addresses were changed by hand as follows:
 - 2200 MC KENZIE changed to 2200 MC KENZIE DRIVE
 - 3906 BARBARA changed to 3906 BARBARA DRIVE
 
+NEED TO FIX xxx.5 SPURR LANE (what happened?)
 
 
 #### R script "address_extraction.R"
