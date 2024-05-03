@@ -4,11 +4,12 @@ const axios = require('axios');
 const path = require('path');
 const { promisify } = require('util');
 const writeFile = promisify(fs.writeFile);
-const dotenv = require('dotenv').config();
 
-const API_KEY = process.env.API_KEY; // replace with your Google API key
-const csvFilePath = path.join(__dirname, '..', 'data', 'address_only.csv');
-const outputFilePath = path.join(__dirname, '..', 'data', 'geocoded_output.json');
+const dotenv = require('dotenv').config({ path: path.join('.env') });
+
+const API_KEY = process.env.API_KEY; 
+const csvFilePath = path.join('data', 'address_only.csv');
+const outputFilePath = path.join('data', 'api_output.json');
 
 let data = [];
 
@@ -26,8 +27,10 @@ fs.createReadStream(csvFilePath)
         .then(response => {
           if (response.data.status === 'ZERO_RESULTS') {
             console.log(`No results for address: ${address}`);
+            return null;
           }
-          return response.data;
+          // Return only the first result
+          return response.data.results[0];
         })
         .catch(error => {
           console.error(`Error occurred while fetching geocode for address: ${address}. Error: ${error.message}`);
@@ -41,6 +44,8 @@ fs.createReadStream(csvFilePath)
         results = results.filter(item => item); // remove nulls
         return writeFile(outputFilePath, JSON.stringify(results, null, 2));
       })
-      .then(() => console.log('All data saved to output.json'))
+      .then(() => console.log('All data saved file'))
       .catch(error => console.error('Error occurred while saving data to file', error));
   });
+
+  console.log(process.env)
