@@ -176,8 +176,17 @@ In order to mitigate errors, addresses were changed by hand as follows:
 - 5701 YUKON CHARLIE changed to 5701 YUKON CHARLIE LOOP
 - 2200 MC KENZIE changed to 2200 MC KENZIE DRIVE
 - 3906 BARBARA changed to 3906 BARBARA DRIVE
+- 4004 MERRILL changed to 4004 MERRILL DRIVE
+- 2961 DRAKE changed to 2961 DRAKE DRIVE
+- 2638 REDWOOD changed to 2638 REDWOOD STREET
+- 1813 ROGERS PARK changed to 1813 ROGERS PARK COURT
+- 2667 NORTHRUP changed to 2667 NORTHRUP CIRCLE
+- 2630 DARBY changed to 2630 DARBY CIRCLE
+- 3000 WENTWORTH changed to 3000 WENTWORTH STREET
+- 2414 NORTHRUP changed to 2414 NORTHRUP CIRCLE
+- 6010 CRAIG changed to 6010 CRAIG DRIVE
+- 2421 REDWOOD changed to 2421 REDWOOD STREET
 
-NEED TO FIX xxx.5 SPURR LANE (what happened?)
 
 
 #### R script "address_extraction.R"

@@ -23,4 +23,4 @@ data.forEach(item => {
 const csv = json2csvParser.parse(csvData);
 
 // Write the CSV data to file
-fs.writeFileSync('./data/address_lat_long.csv', csv);
+fs.writeFileSync('./data/output.csv', csv);
