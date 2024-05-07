@@ -7,7 +7,7 @@ const writeFile = promisify(fs.writeFile);
 
 const dotenv = require('dotenv').config({ path: path.join('.env') });
 
-const API_KEY = process.env.API_KEY; 
+const GOOGLE_GEOCODE_API = process.env.GOOGLE_GEOCODE_API; 
 const csvFilePath = path.join('data', 'input_addresses.csv');
 const outputFilePath = path.join('data', 'api_output.json');
 
@@ -17,7 +17,7 @@ fs.createReadStream(csvFilePath)
   .pipe(csv())
   .on('data', (row) => {
     const address = row.Address; // replace 'address' with your CSV column name
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${API_KEY}`;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GOOGLE_GEOCODE_API}`;
   
     console.log(`Fetching geocode for address: ${address}`);
     console.log(`Request URL: ${url}`);
