@@ -35,16 +35,20 @@ The flow came full circle via the script `join_output_source.R`, where the outpu
 <br>
 <br>
 
-### Part 2: Heatmap of Solar Installs
-
-#### Heatmap
-With the source data combined with location coordinates, we were able to place points on a map and interpolate a heatmap of solar installations from 2017 to 2023. 
-
-<br>
-<br>
-
 ### Workflow Diagram
 ![Diagram of Workflow](/flow.jpg?raw=true "Workflow")
+
+<br>
+<br>
+
+### Part 2: Heat Map of Solar Installs
+
+#### Heat Map
+With the source data combined with location coordinates, we were able to place points on a map and interpolate a heat map of solar installations from 2017 to 2023. 
+
+
+
+
 
 
 
