@@ -1,15 +1,12 @@
 {
   "dependencies": {
-    "@tidyjs/tidy": "^2.5.2",
     "axios": "^1.6.8",
     "csv-parser": "^3.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
-    "heatmapjs": "^2.0.2",
     "json2csv": "^6.0.0-alpha.2",
     "mapbox-gl": "^3.3.0",
-    "mermaid": "^10.9.0",
     "path": "^0.12.7",
     "util": "^0.12.5"
   }

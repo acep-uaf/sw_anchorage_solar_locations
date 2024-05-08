@@ -30,7 +30,7 @@ var map = new mapboxgl.Map({
 });
 
 
-fetch('/data/api_output.json')
+fetch('data/api_output.json')
   .then(response => response.json())
   .then(data => {
     const geojsonData = convertToGeoJSON(data);
@@ -74,18 +74,3 @@ fetch('/data/api_output.json')
   });
 });
 
-
-
-
-// old point layer from JSON
-// fetch('../data/api_output.json')
-//     .then(response => response.json())
-//     .then(data => {
-//         data.forEach(item => {
-//             new mapboxgl.Marker()
-//                 .setLngLat([item.geometry.location.lng, item.geometry.location.lat])
-//                 .addTo(map);
-//         });
-//     })
-//     .catch(error => console.error('Error:', error));
-// });
