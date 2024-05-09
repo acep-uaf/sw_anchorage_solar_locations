@@ -16,11 +16,7 @@ function convertToGeoJSON(data) {
 }
 
 
-
-fetch('/mapbox-api-key')
-  .then(response => response.json())
-  .then(data => {
-    mapboxgl.accessToken = data.key;
+mapboxgl.accessToken = 'MAPBOX_API';
 
 var map = new mapboxgl.Map({
     container: 'map', // container id
