@@ -68,5 +68,5 @@ fetch('data/api_output.json')
       });
     });
   });
-});
+
 
