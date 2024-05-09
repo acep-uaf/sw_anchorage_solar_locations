@@ -1,6 +1,7 @@
 library(readr)
 library(stringr)
 library(dplyr)
+library(tidyr)
 
 # load source data
 RawSolarPermits <- read_csv(file = "./data/raw_2017_2023_SolarPermits.csv")
@@ -13,6 +14,14 @@ SolarPermits <- RawSolarPermits %>%
 
 # remove * + ~ ^ & , 
 SolarPermits$`IssuedTo` <- gsub("[\\*\\+\\~\\^\\&\\,\\50%]", "", SolarPermits$`IssuedTo`)
+
+# remove $ from valuation
+SolarPermits$Valuation <- gsub("[\\$]", "", SolarPermits$Valuation)
+
+SolarPermits <- SolarPermits %>%
+  mutate(year = 
+           year(parse_date_time(Date, c('Y', '%m/%d/%Y', '%m/%d/%y'))),
+         .after = Date)
 
 # CSV of addresses to be changed
 address_changes <- read_csv(file = "./data/address_changes.csv")

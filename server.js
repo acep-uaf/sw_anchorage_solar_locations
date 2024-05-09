@@ -1,18 +1,27 @@
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
+const fs = require('fs');
 const app = express();
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, '/')));
-
-app.get('/mapbox-api-key', (req, res) => {
-  res.send({ key: process.env.MAPBOX_API });
+app.get('/code/heatmap.js', (req, res) => {
+  fs.readFile(path.join(__dirname, '/code/heatmap.js'), 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('An error occurred while reading heatmap.js');
+    }
+    const replacedData = data.replace('MAPBOX_API', process.env.MAPBOX_API);
+    res.setHeader('Content-Type', 'application/javascript');
+    res.send(replacedData);
+  });
 });
+
+app.use(express.static(path.join(__dirname, '/')));
 
 // Catch-all route handler
 app.get('*', (req, res) => {
-  res.send(`Cannot find ${req.originalUrl} on this server!`, 404);
+  res.status(404).send(`Cannot find ${req.originalUrl} on this server!`);
 });
 
 app.listen(port, () => {

@@ -1,5 +1,7 @@
 library(readr)
 library(stringr)
+library(dplyr)
+library(lubridate)
 
 clean_SolarPermits <- read_csv(file = "./data/clean_2017_2023_SolarPermits.csv")
 
