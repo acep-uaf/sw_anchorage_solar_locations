@@ -26,10 +26,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Load Secrets
-        run: sed -i 's/MAPBOX_API/${{ secrets.MAPBOX_API }}/' heatmap.js
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Load Secrets
+        run: sed -i 's/MAPBOX_API/${{ secrets.MAPBOX_API }}/' heatmap.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
