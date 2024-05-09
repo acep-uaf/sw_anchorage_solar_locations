@@ -5,7 +5,8 @@ var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
     center: [-149.75, 61.22], // starting position [lng, lat]
-    zoom: 9 // starting zoom
+    zoom: 9, // starting zoom
+    maxZoom: 12
 });
 
 const years = [
@@ -60,7 +61,7 @@ function jsonCallback(err, data) {
     'paint': {
       // Add custom heatmap layer properties here
       'heatmap-weight': ['interpolate', ['linear'], ['get', 'Valuation'], 0, 0, 6, 1],
-      'heatmap-intensity': ['interpolate', ['linear'], ['zoom'], 0, 1, 9, 3],
+      'heatmap-intensity': ['interpolate', ['linear'], ['zoom'], 0, 1, 12, 3],
       'heatmap-color': [
         'interpolate',
         ['linear'],
@@ -78,8 +79,8 @@ function jsonCallback(err, data) {
         1,
         'rgb(178,24,43)'
       ],
-      'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 0, 2, 9, 20],
-      'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 7, 1, 14, 0]
+      'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 0, 5, 12, 100],
+      'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 9, 1, 12, 0]
     }
   });
 
