@@ -29,7 +29,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Load Secrets
-        run: sed -i 's/MAPBOX_API/${{ secrets.MAPBOX_API }}/' heatmap.js
+        run: sed -i 's/MAPBOX_API/${{ secrets.MAPBOX_API }}/' code/heatmap.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
