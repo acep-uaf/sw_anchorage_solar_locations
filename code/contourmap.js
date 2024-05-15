@@ -9,19 +9,47 @@ var map = new mapboxgl.Map({
     maxZoom: 12
 });
 
-const years = [
-  '2017',
-  '2018',
-  '2019',
-  '2020',
-  '2021',
-  '2022',
-  '2023'
-];
+// Define the years
+let years = [2017, 2018, 2019, 2020, 2021, 2022, 2023];
+
+// Start with the first year
+let currentYearIndex = 0;
+
+// Get the slider element
+let slider = document.getElementById('year-slider');
+
+// Set the initial slider value
+slider.value = years[currentYearIndex];
+
+// Create a loop that updates the slider value
+let intervalId = setInterval(function() {
+  // Move to the next year
+  currentYearIndex++;
+
+  // If we've gone through all the years, loop back to the first year
+  if (currentYearIndex >= years.length) {
+    currentYearIndex = 0;
+  }
+
+  // Update the slider value
+  slider.value = years[currentYearIndex];
+  filterBy(years[currentYearIndex]);
+}, 1000); // Change the slider value every 1000 milliseconds (1 second)
+
+// Stop the loop when the slider is clicked
+slider.addEventListener('mousedown', function() {
+  clearInterval(intervalId);
+});
+
+// Update the heatmap when the slider value changes
+slider.addEventListener('input', function(e) {
+  const year = parseInt(e.target.value, 10);
+  filterBy(year);
+});
 
 function filterBy(year) {
   // Set a filter on the heatmap layer to only show data for the selected year
-  map.setFilter('contour-layer', ['==', ['get', 'year'], year]);
+  map.setFilter('contour-layer', ['<=', ['get', 'year'], year]);
   // Update the year display
   document.getElementById('year-display').textContent = year;
 }
