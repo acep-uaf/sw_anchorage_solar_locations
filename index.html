@@ -8,11 +8,26 @@
 <body>
     <div id="map"></div>
 
-    <div class="map-overlay top">
+    <div class="map-overlay bottom-left">
         <div class="map-overlay-inner">
             <h2>Anchorage Solar Installations</h2>
             <input id="year-slider" type="range" min="2017" max="2023" step="1" value="2017">
             <p>Year: <span id="year-display"></span></p>
+        </div>
+    </div>
+
+    <div class="map-overlay legend">
+        <div class="map-overlay-transparent">
+            <div class="color-group">
+                <div class="color-box" style="background-color: #D889E8;"></div>
+                <div class="color-box" style="background-color: #996DE8;"></div>
+                <div class="color-box" style="background-color: #434FE6;"></div>
+            </div>
+            <div class="color-group">
+                <div class="color-circle" style="background-image: url('images/low_density.jpg');"></div>
+                <div class="color-circle" style="background-image: url('images/med_density.jpg');"></div>
+                <div class="color-circle" style="background-image: url('images/high_density.jpg');"></div>
+            </div>
         </div>
     </div>
 
