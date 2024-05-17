@@ -6,14 +6,34 @@ let geojsonData = JSON.parse(rawdata);
 
 let geojsonPoints = {
   type: "FeatureCollection",
-  features: geojsonData.features
+  features: geojsonData.features.map(feature => {
+    return {
+      ...feature,
+      properties: {
+        ...feature.properties,
+        Valuation: feature.properties.properties.Valuation
+      }
+    };
+  })
 };
 
+// Debugging: Check if geojsonPoints contains any features
+console.log(`Number of features in geojsonPoints: ${geojsonPoints.features.length}`);
+
+// Debugging: Check if the property 'Valuation' exists in the features
+let featuresWithValuation = geojsonPoints.features.filter(feature => feature.properties && feature.properties.Valuation);
+console.log(`Number of features with 'Valuation' property: ${featuresWithValuation.length}`);
+
+let valuationValues = featuresWithValuation.map(feature => feature.properties.Valuation);
+let minValuation = Math.min(...valuationValues);
+let maxValuation = Math.max(...valuationValues);
+console.log(`Min Valuation: ${minValuation}, Max Valuation: ${maxValuation}`);
+
 let bbox = turf.bbox(geojsonPoints);
-console.log(bbox);
+console.log(`Bounding box: ${bbox}`);
 
 // Define the grid parameters
-let cellSize = 0.1;
+let cellSize = 0.01;
 let gridUnits = 'degrees';
 
 // Create a grid of points
