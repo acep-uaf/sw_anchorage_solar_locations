@@ -7,12 +7,12 @@ const data = [];
 fs.createReadStream('data/permits_lat_long.csv')
   .pipe(csv())
   .on('data', (row) => {
-    // Assuming your CSV has 'latitude' and 'longitude' columns
-    data.push({
-      lat: parseFloat(row.lat),
-      lng: parseFloat(row.lng),
-      properties: row
-    });
+    // Convert latitude and longitude to numbers    
+      row.lat = parseFloat(row.lat);
+      row.lng = parseFloat(row.lng);
+
+    // Add the row directly to the data array
+      data.push(row);
   })
   .on('end', () => {
     const geoJson = GeoJSON.parse(data, {Point: ['lat', 'lng']});
