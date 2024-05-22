@@ -11,3 +11,6 @@ node ./code/output_to_csv.js
 
 # Join lat/long to source data
 Rscript ./code/join_output_source.R
+
+# Convert CSV to GeoJSON
+node ./code/csv_to_geojson.js
