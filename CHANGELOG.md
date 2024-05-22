@@ -1,24 +1,3 @@
-### Source Data
-
-Monday April 29, 2024:  
-* sgcrichton@alaska.edu emailed @ianalexmac a file, "2017-2023CombinedDETAILED.xlsx" which contains a list of permitted work in the Anchorage area.  
-* The Excel file contains two sheets: 
-- "AllPermits", records of permitted work in the Anchorage area from 2017-2023  
-- "SolarPermits", records of permitted *solar* work in the Anchorage area from 2017-2023 
-
-* The contents of sheet "SolarPermits" were exported to "anchorage_solar_permits.xlsx"  
-
-* "anchorage_solar_permits.xlsx" was exported to "anchorage_solar_permits.csv", the working dataset
-
-
-### Cleaning
-column `IssuedTo`:
-- removed characters: `* + ~ ^ & ,` 
-column `Valuation`:
-- removed character: `$` 
-column `Date`: 
-needs formatting work, do later
-
 ### Address Changes
 Approximately 150 addresses failed to parse, likely due to poor street address names
 It looks like "Circle" was especially difficult to parse
@@ -186,16 +165,4 @@ In order to mitigate errors, addresses were changed by hand as follows:
 - 2414 NORTHRUP changed to 2414 NORTHRUP CIRCLE
 - 6010 CRAIG changed to 6010 CRAIG DRIVE
 - 2421 REDWOOD changed to 2421 REDWOOD STREET
-
-
-
-#### R script "address_extraction.R"
-- imports "anchorage_solar_permits.csv"
-- creates new column AddressAnchorage 
-- adds string ", Anchorage, AK" to the end of each address
-- selects column AddressAnchorage
-- writes to file as "./data/address_only.csv"
-
-
-
 
