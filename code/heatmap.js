@@ -71,7 +71,7 @@ function jsonCallback(err, data) {
   }
 
   data.features = data.features.map((d) => {
-    d.properties.year = Number(d.properties.properties.year);
+    d.properties.year = Number(d.properties.year);
     return d;
   });
 
