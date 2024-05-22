@@ -16,7 +16,7 @@ let data = [];
 fs.createReadStream(csvFilePath)
   .pipe(csv())
   .on('data', (row) => {
-    const address = row.Address; // replace 'address' with your CSV column name
+    const address = row.Address; 
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GOOGLE_GEOCODE_API}`;
   
     console.log(`Fetching geocode for address: ${address}`);
